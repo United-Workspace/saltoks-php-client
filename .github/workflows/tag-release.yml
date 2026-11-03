@@ -1,0 +1,15 @@
+name: Tag Release
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    uses: United-Workspace/openapi-sdk-builder/.github/workflows/sdk-tag-release.yml@main
+    with:
+      spec-file: '.generator/swagger.json'
+    secrets: inherit

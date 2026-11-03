@@ -1,0 +1,23 @@
+name: Generate Salto KS Client
+on:
+  workflow_dispatch:
+  schedule:
+    # Run every Monday at 06:00 UTC to check for upstream API updates
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    uses: United-Workspace/openapi-sdk-builder/.github/workflows/sdk-generate.yml@main
+    with:
+      spec-url: 'https://connect.my-clay.com/swagger/v-latest/swagger.json'
+      generator-name: 'php'
+      generator-version: 'v7.13.0'
+      skip-validate-spec: true
+      pr-title: 'feat: Update Salto KS API Client'
+      pr-reviewers: 'Nolanus'
+      pr-assignees: 'Nolanus'
+    secrets: inherit

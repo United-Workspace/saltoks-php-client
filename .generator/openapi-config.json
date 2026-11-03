@@ -1,0 +1,18 @@
+{
+  "swaggerUrl": "https://connect.my-clay.com/swagger/v-latest/swagger.json",
+  "generatorVersion": "v7.13.0",
+  "invokerPackage": "SaltoKS",
+  "apiPackage": "Api",
+  "modelPackage": "Model",
+  "packageName": "saltoks-api",
+  "srcBasePath": "lib",
+  "variableNamingConvention": "camelCase",
+  "hideGenerationTimestamp": true,
+  "skipValidateSpec": true,
+  "prAssignees": [
+    "Nolanus"
+  ],
+  "prReviewers": [
+    "Nolanus"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "Declarative API specification enrichments for Salto KS",
+  "enumAdditions": {},
+  "discriminatorMappings": {}
+}
