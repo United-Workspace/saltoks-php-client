@@ -17,7 +17,7 @@ v12SitesSiteIdIqsIdPinGet($siteId, $id, $sendEmail)
 
 Gets the pin of the current user for that IQ and sends it as SMS
 
-### Permission authorization - Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE
+### Permission authorization - Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE              ### OTP Requirements This endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.
 
 ### Example
 
@@ -80,7 +80,7 @@ v12SitesSiteIdIqsIdPinPut($siteId, $id, $putPinRequest)
 
 Changes the pin of the user
 
-### Permission authorization - Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE
+### Permission authorization - Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE              ### OTP Requirements This endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.
 
 ### Example
 
@@ -143,7 +143,7 @@ v12SitesSiteIdIqsIdPinUserIdDelete($siteId, $id, $userId, $otp)
 
 Resets an activation
 
-### Permission authorization - Required: PIN_RESET
+### Permission authorization - Required: PIN_RESET              ### OTP Requirements This endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.
 
 ### Example
 

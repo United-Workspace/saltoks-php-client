@@ -148,7 +148,7 @@ v12SitesSiteIdInstallerAccessIqsIqIdPatch($siteId, $iqId, $patchInstallerAccessI
 
 Enables installer access to the specified IQ
 
-### Permission authorization - Required: INSTALLER_ACCESS_MANAGE
+### Permission authorization - Required: INSTALLER_ACCESS_MANAGE              ### OTP Requirements The OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.
 
 ### Example
 

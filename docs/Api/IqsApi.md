@@ -344,7 +344,7 @@ v12SitesSiteIdIqsIdSecretGet($siteId, $id, $otp): \SaltoKS\Model\IqSecretRespons
 
 Get the secret of the IQ
 
-### Permission authorization - Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE
+### Permission authorization - Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE              ### OTP Requirements This endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.
 
 ### Example
 

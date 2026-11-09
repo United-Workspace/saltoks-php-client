@@ -33,7 +33,7 @@ $apiInstance = new SaltoKS\Api\SiteMeApi(
     new GuzzleHttp\Client(),
     $config
 );
-$siteId = 'siteId_example'; // string
+$siteId = 'siteId_example'; // string | 
 
 try {
     $result = $apiInstance->v2SitesSiteIdMePermissionsGet($siteId);
@@ -91,7 +91,7 @@ $apiInstance = new SaltoKS\Api\SiteMeApi(
     new GuzzleHttp\Client(),
     $config
 );
-$siteId = 'siteId_example'; // string
+$siteId = 'siteId_example'; // string | 
 $filter = 'filter_example'; // string | Filter the results using OData syntax.
 $orderby = 'orderby_example'; // string | Order the results using OData syntax.
 $skip = 56; // int | The number of results to skip.

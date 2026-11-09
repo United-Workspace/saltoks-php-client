@@ -134,7 +134,7 @@ class SiteMeApi
      *
      * Retrieves permissions for specific site of the current user with OData support
      *
-     * @param  string $siteId siteId (required)
+     * @param  string $siteId  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdMePermissionsGet'] to see the possible values for this operation
      *
      * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
@@ -152,7 +152,7 @@ class SiteMeApi
      *
      * Retrieves permissions for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdMePermissionsGet'] to see the possible values for this operation
      *
      * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
@@ -265,7 +265,7 @@ class SiteMeApi
      *
      * Retrieves permissions for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdMePermissionsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -286,7 +286,7 @@ class SiteMeApi
      *
      * Retrieves permissions for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdMePermissionsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -336,7 +336,7 @@ class SiteMeApi
     /**
      * Create request for operation 'v2SitesSiteIdMePermissionsGet'
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdMePermissionsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -434,7 +434,7 @@ class SiteMeApi
      *
      * Retrieves roles for specific site of the current user with OData support
      *
-     * @param  string $siteId siteId (required)
+     * @param  string $siteId  (required)
      * @param  string|null $filter Filter the results using OData syntax. (optional)
      * @param  string|null $orderby Order the results using OData syntax. (optional)
      * @param  int|null $skip The number of results to skip. (optional)
@@ -457,7 +457,7 @@ class SiteMeApi
      *
      * Retrieves roles for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string|null $filter Filter the results using OData syntax. (optional)
      * @param  string|null $orderby Order the results using OData syntax. (optional)
      * @param  int|null $skip The number of results to skip. (optional)
@@ -575,7 +575,7 @@ class SiteMeApi
      *
      * Retrieves roles for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string|null $filter Filter the results using OData syntax. (optional)
      * @param  string|null $orderby Order the results using OData syntax. (optional)
      * @param  int|null $skip The number of results to skip. (optional)
@@ -601,7 +601,7 @@ class SiteMeApi
      *
      * Retrieves roles for specific site of the current user with OData support
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string|null $filter Filter the results using OData syntax. (optional)
      * @param  string|null $orderby Order the results using OData syntax. (optional)
      * @param  int|null $skip The number of results to skip. (optional)
@@ -656,7 +656,7 @@ class SiteMeApi
     /**
      * Create request for operation 'v2SitesSiteIdMeRolesGet'
      *
-     * @param  string $siteId (required)
+     * @param  string $siteId  (required)
      * @param  string|null $filter Filter the results using OData syntax. (optional)
      * @param  string|null $orderby Order the results using OData syntax. (optional)
      * @param  int|null $skip The number of results to skip. (optional)

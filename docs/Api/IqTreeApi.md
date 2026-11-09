@@ -78,7 +78,7 @@ v12SitesSiteIdIqsIdTreePut($siteId, $id, $putIqTreeRequest): \SaltoKS\Model\Tree
 
 Sets the hardware tree of the IQ
 
-### Permission authorization - Required: HARDWARE_MANAGE
+### Permission authorization - Required: HARDWARE_MANAGE              ### OTP Requirements The OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.
 
 ### Example
 

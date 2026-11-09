@@ -249,6 +249,8 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**v12SitesSiteIdRolesRoleIdDelete**](docs/Api/RolesApi.md#v12sitessiteidrolesroleiddelete) | **DELETE** /v1.2/sites/{site_id}/roles/{role_id} | Deletes a site role
 *SiteAccessCodesApi* | [**v12SitesSiteIdAccessCodesAccessCodeIdRevokePost**](docs/Api/SiteAccessCodesApi.md#v12sitessiteidaccesscodesaccesscodeidrevokepost) | **POST** /v1.2/sites/{site_id}/access_codes/{access_code_id}/revoke | Revokes an access codes of a site
 *SiteAccessCodesApi* | [**v12SitesSiteIdAccessCodesGet**](docs/Api/SiteAccessCodesApi.md#v12sitessiteidaccesscodesget) | **GET** /v1.2/sites/{site_id}/access_codes | Retrieves the access codes for a site The code will not be returned in this endpoint
+*SiteCredentialSettingsApi* | [**getV2**](docs/Api/SiteCredentialSettingsApi.md#getv2) | **GET** /v2/sites/{siteId}/credentialSettings | 
+*SiteCredentialSettingsApi* | [**putV2**](docs/Api/SiteCredentialSettingsApi.md#putv2) | **PATCH** /v2/sites/{siteId}/credentialSettings | 
 *SiteGuestsApi* | [**v12SitesSiteIdGuestsPost**](docs/Api/SiteGuestsApi.md#v12sitessiteidguestspost) | **POST** /v1.2/sites/{site_id}/guests | Creates a new guest for a site
 *SiteMeApi* | [**v2SitesSiteIdMePermissionsGet**](docs/Api/SiteMeApi.md#v2sitessiteidmepermissionsget) | **GET** /v2/sites/{siteId}/me/permissions | Retrieves permissions for specific site of the current user with OData support
 *SiteMeApi* | [**v2SitesSiteIdMeRolesGet**](docs/Api/SiteMeApi.md#v2sitessiteidmerolesget) | **GET** /v2/sites/{siteId}/me/roles | Retrieves roles for specific site of the current user with OData support
@@ -342,6 +344,10 @@ Class | Method | HTTP request | Description
 - [CreateOrGetExistingUserRequest](docs/Model/CreateOrGetExistingUserRequest.md)
 - [CreateOrUpdateApplicationRequest](docs/Model/CreateOrUpdateApplicationRequest.md)
 - [CreateOrUpdateSiteRoleRequest](docs/Model/CreateOrUpdateSiteRoleRequest.md)
+- [CredentialRelationStatus](docs/Model/CredentialRelationStatus.md)
+- [CredentialScope](docs/Model/CredentialScope.md)
+- [CredentialSettingsResponse](docs/Model/CredentialSettingsResponse.md)
+- [CredentialTaxonomyDto](docs/Model/CredentialTaxonomyDto.md)
 - [CustomSettingsRequest](docs/Model/CustomSettingsRequest.md)
 - [CustomSettingsResponse](docs/Model/CustomSettingsResponse.md)
 - [DataProcessingType](docs/Model/DataProcessingType.md)
@@ -360,6 +366,7 @@ Class | Method | HTTP request | Description
 - [EntryResponsePagedResponseWithContinuationToken](docs/Model/EntryResponsePagedResponseWithContinuationToken.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
 - [ExportEventsFilterRequest](docs/Model/ExportEventsFilterRequest.md)
+- [ExtendedInfo](docs/Model/ExtendedInfo.md)
 - [ExtendedSiteUserKeyResponse](docs/Model/ExtendedSiteUserKeyResponse.md)
 - [ExtendedSiteUserKeyResponsePagedResponse](docs/Model/ExtendedSiteUserKeyResponsePagedResponse.md)
 - [FeatureCodeResponse](docs/Model/FeatureCodeResponse.md)
@@ -368,6 +375,8 @@ Class | Method | HTTP request | Description
 - [FloorSummaryResponsePagedResponse](docs/Model/FloorSummaryResponsePagedResponse.md)
 - [FullFrontalIsoComplianceDto](docs/Model/FullFrontalIsoComplianceDto.md)
 - [GetAuditRetentionSettingsResponse](docs/Model/GetAuditRetentionSettingsResponse.md)
+- [GetExpandableCredentialResponse](docs/Model/GetExpandableCredentialResponse.md)
+- [GetExpandableCredentialResponsePagedResponse](docs/Model/GetExpandableCredentialResponsePagedResponse.md)
 - [GetMyPictureResponse](docs/Model/GetMyPictureResponse.md)
 - [HardwareCommunicationType](docs/Model/HardwareCommunicationType.md)
 - [HardwareType](docs/Model/HardwareType.md)
@@ -447,6 +456,7 @@ Class | Method | HTTP request | Description
 - [PatchAccessGroupLocksRequest](docs/Model/PatchAccessGroupLocksRequest.md)
 - [PatchAccessGroupRequest](docs/Model/PatchAccessGroupRequest.md)
 - [PatchAccessGroupUsersRequest](docs/Model/PatchAccessGroupUsersRequest.md)
+- [PatchCredentialSettingsRequest](docs/Model/PatchCredentialSettingsRequest.md)
 - [PatchDataRemovalRequest](docs/Model/PatchDataRemovalRequest.md)
 - [PatchEntryNotificationRuleRequest](docs/Model/PatchEntryNotificationRuleRequest.md)
 - [PatchFloorRequest](docs/Model/PatchFloorRequest.md)
@@ -523,6 +533,7 @@ Class | Method | HTTP request | Description
 - [ProblemDetails](docs/Model/ProblemDetails.md)
 - [ProductResponse](docs/Model/ProductResponse.md)
 - [ProductResponsePagedResponse](docs/Model/ProductResponsePagedResponse.md)
+- [ProfileDto](docs/Model/ProfileDto.md)
 - [ProfileType](docs/Model/ProfileType.md)
 - [PutAssignmentRequest](docs/Model/PutAssignmentRequest.md)
 - [PutAuditRetentionSettingsRequest](docs/Model/PutAuditRetentionSettingsRequest.md)
