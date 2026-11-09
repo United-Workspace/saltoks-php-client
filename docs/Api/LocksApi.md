@@ -154,7 +154,7 @@ v12SitesSiteIdLocksIdDetachPatch($siteId, $id, $detachLockRequest): \SaltoKS\Mod
 
 Detaches the lock from the Iq
 
-### Permission authorization - Required: HARDWARE_MANAGE
+### Permission authorization - Required: HARDWARE_MANAGE              ### OTP Requirements The OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.
 
 ### Example
 
@@ -280,7 +280,7 @@ v12SitesSiteIdLocksIdLockingPatch($siteId, $id, $lockingRequest): \SaltoKS\Model
 
 Performs unlock action or puts the lock in office mode if the current user has permissions
 
-### Permission authorization - Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE
+### Permission authorization - Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL - Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE              ### OTP Requirements The OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.
 
 ### Example
 

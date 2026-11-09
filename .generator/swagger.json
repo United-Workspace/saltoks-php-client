@@ -6005,7 +6005,7 @@
           "InstallerAccess"
         ],
         "summary": "Enables installer access to the specified IQ",
-        "description": "### Permission authorization\n- Required: INSTALLER_ACCESS_MANAGE",
+        "description": "### Permission authorization\n- Required: INSTALLER_ACCESS_MANAGE\n            \n### OTP Requirements\nThe OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.",
         "parameters": [
           {
             "name": "site_id",
@@ -6385,7 +6385,7 @@
           "IqPin"
         ],
         "summary": "Gets the pin of the current user for that IQ and sends it as SMS",
-        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE",
+        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE\n            \n### OTP Requirements\nThis endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.",
         "parameters": [
           {
             "name": "site_id",
@@ -6478,7 +6478,7 @@
           "IqPin"
         ],
         "summary": "Changes the pin of the user",
-        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE",
+        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL, REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE, REMOTE_OFFICEMODE_ACCESSIBLE\n            \n### OTP Requirements\nThis endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.",
         "parameters": [
           {
             "name": "site_id",
@@ -6584,7 +6584,7 @@
           "IqPin"
         ],
         "summary": "Resets an activation",
-        "description": "### Permission authorization\n- Required: PIN_RESET",
+        "description": "### Permission authorization\n- Required: PIN_RESET\n            \n### OTP Requirements\nThis endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.",
         "parameters": [
           {
             "name": "site_id",
@@ -7106,7 +7106,7 @@
           "Iqs"
         ],
         "summary": "Get the secret of the IQ",
-        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE",
+        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE\n            \n### OTP Requirements\nThis endpoint requires OTP to be enabled on the IQ. If OTP is disabled on the IQ, the request is not supported, and the endpoint should not be called.",
         "parameters": [
           {
             "name": "site_id",
@@ -7672,7 +7672,7 @@
           "IqTree"
         ],
         "summary": "Sets the hardware tree of the IQ",
-        "description": "### Permission authorization\n- Required: HARDWARE_MANAGE",
+        "description": "### Permission authorization\n- Required: HARDWARE_MANAGE\n            \n### OTP Requirements\nThe OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.",
         "parameters": [
           {
             "name": "site_id",
@@ -9929,7 +9929,7 @@
           "Locks"
         ],
         "summary": "Performs unlock action or puts the lock in office mode if the current user has permissions",
-        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE",
+        "description": "### Permission authorization\n- Required: REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL\n- Accessible: REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE\n            \n### OTP Requirements\nThe OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.",
         "parameters": [
           {
             "name": "site_id",
@@ -10032,7 +10032,7 @@
           "Locks"
         ],
         "summary": "Detaches the lock from the Iq",
-        "description": "### Permission authorization\n- Required: HARDWARE_MANAGE",
+        "description": "### Permission authorization\n- Required: HARDWARE_MANAGE\n            \n### OTP Requirements\nThe OTP parameter must only be provided if OTP is enabled for the associated IQ. If OTP is disabled on the IQ, the OTP parameter must be omitted from the request.",
         "parameters": [
           {
             "name": "site_id",
@@ -19328,6 +19328,7 @@
           {
             "name": "siteId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -19428,6 +19429,7 @@
           {
             "name": "siteId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -21528,6 +21530,131 @@
           }
         }
       }
+    },
+    "/v2/sites/{siteId}/credentialSettings": {
+      "get": {
+        "tags": [
+          "SiteCredentialSettings"
+        ],
+        "operationId": "GetV2",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialSettingsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "SiteCredentialSettings"
+        ],
+        "operationId": "PutV2",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchCredentialSettingsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchCredentialSettingsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialSettingsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -22538,6 +22665,58 @@
         },
         "additionalProperties": false
       },
+      "CredentialRelationStatus": {
+        "enum": [
+          "Active",
+          "Blocked"
+        ],
+        "type": "string"
+      },
+      "CredentialScope": {
+        "enum": [
+          "Tenant",
+          "Organization",
+          "Site"
+        ],
+        "type": "string"
+      },
+      "CredentialSettingsResponse": {
+        "type": "object",
+        "properties": {
+          "allowForeignTagsByDefault": {
+            "type": "boolean"
+          },
+          "allowOfflineAccessByDefaultVTag": {
+            "type": "boolean"
+          },
+          "allowCustomPins": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CredentialTaxonomyDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "CustomSettingsRequest": {
         "type": "object",
         "properties": {
@@ -23235,6 +23414,16 @@
         },
         "additionalProperties": false
       },
+      "ExtendedInfo": {
+        "type": "object",
+        "properties": {
+          "rfuid": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ExtendedSiteUserKeyResponse": {
         "type": "object",
         "properties": {
@@ -23478,6 +23667,83 @@
           "retention_period_in_days": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetExpandableCredentialResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tenantId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "profileId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "taxonomyCode": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "$ref": "#/components/schemas/CredentialTaxonomyDto"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CredentialRelationStatus"
+          },
+          "extendedInfo": {
+            "$ref": "#/components/schemas/ExtendedInfo"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileDto"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/CredentialScope"
+          },
+          "publicKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "isOrigin": {
+            "type": "boolean"
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "assignedOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetExpandableCredentialResponsePagedResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetExpandableCredentialResponse"
+            },
+            "nullable": true
+          },
+          "nextPageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -25430,6 +25696,24 @@
               "format": "uuid"
             },
             "description": "Represents a list of users to be deleted from an access group",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PatchCredentialSettingsRequest": {
+        "type": "object",
+        "properties": {
+          "allowForeignTagsByDefault": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allowOfflineAccessByDefaultVTag": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allowCustomPins": {
+            "type": "boolean",
             "nullable": true
           }
         },
@@ -27602,6 +27886,32 @@
           "count": {
             "type": "integer",
             "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
             "nullable": true
           }
         },
