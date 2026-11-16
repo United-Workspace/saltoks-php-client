@@ -107,4 +107,16 @@ class CustomSettingsApiTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for v11SitesSiteIdUsersSiteUserIdSettingsKeysGet
+     *
+     * Gets the custom settings keys for a site user.
+     *
+     */
+    public function testV11SitesSiteIdUsersSiteUserIdSettingsKeysGet()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

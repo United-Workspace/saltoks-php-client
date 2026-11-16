@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *CustomSettingsApi* | [**v11SitesSiteIdUsersSiteUserIdSettingsKeyDelete**](docs/Api/CustomSettingsApi.md#v11sitessiteiduserssiteuseridsettingskeydelete) | **DELETE** /v1.1/sites/{site_id}/users/{site_user_id}/settings/{key} | Deletes the custom settings for a site user
 *CustomSettingsApi* | [**v11SitesSiteIdUsersSiteUserIdSettingsKeyGet**](docs/Api/CustomSettingsApi.md#v11sitessiteiduserssiteuseridsettingskeyget) | **GET** /v1.1/sites/{site_id}/users/{site_user_id}/settings/{key} | Gets the custom settings for a site user
 *CustomSettingsApi* | [**v11SitesSiteIdUsersSiteUserIdSettingsKeyPut**](docs/Api/CustomSettingsApi.md#v11sitessiteiduserssiteuseridsettingskeyput) | **PUT** /v1.1/sites/{site_id}/users/{site_user_id}/settings/{key} | Creates or updates the custom settings for a site user
+*CustomSettingsApi* | [**v11SitesSiteIdUsersSiteUserIdSettingsKeysGet**](docs/Api/CustomSettingsApi.md#v11sitessiteiduserssiteuseridsettingskeysget) | **GET** /v1.1/sites/{site_id}/users/{site_user_id}/settings/keys | Gets the custom settings keys for a site user
 *DataRemovalsApi* | [**v12SitesSiteIdUsersSiteUserIdDataRemovalsDelete**](docs/Api/DataRemovalsApi.md#v12sitessiteiduserssiteuseriddataremovalsdelete) | **DELETE** /v1.2/sites/{site_id}/users/{site_user_id}/data_removals | Deletes the data removal request for a site user
 *DataRemovalsApi* | [**v12SitesSiteIdUsersSiteUserIdDataRemovalsGet**](docs/Api/DataRemovalsApi.md#v12sitessiteiduserssiteuseriddataremovalsget) | **GET** /v1.2/sites/{site_id}/users/{site_user_id}/data_removals | Gets the data removal request for a site user
 *DataRemovalsApi* | [**v12SitesSiteIdUsersSiteUserIdDataRemovalsPatch**](docs/Api/DataRemovalsApi.md#v12sitessiteiduserssiteuseriddataremovalspatch) | **PATCH** /v1.2/sites/{site_id}/users/{site_user_id}/data_removals | Updates the data removal request for a site user
@@ -260,6 +261,8 @@ Class | Method | HTTP request | Description
 *SiteRoleSettingsApi* | [**v2SitesSiteIdRolesRoleIdSettingsPatch**](docs/Api/SiteRoleSettingsApi.md#v2sitessiteidrolesroleidsettingspatch) | **PATCH** /v2/sites/{siteId}/roles/{roleId}/settings | 
 *SiteRoleSettingsApi* | [**v2SitesSiteIdRolesSettingsGet**](docs/Api/SiteRoleSettingsApi.md#v2sitessiteidrolessettingsget) | **GET** /v2/sites/{siteId}/roles/settings | Retrieves site role settings including role relations in the same hierarchy
 *SiteRolesApi* | [**v2SitesSiteIdRolesGet**](docs/Api/SiteRolesApi.md#v2sitessiteidrolesget) | **GET** /v2/sites/{siteId}/roles | Retrieves roles for specific site with OData support
+*SiteRolesApi* | [**v2SitesSiteIdRolesRoleIdDelete**](docs/Api/SiteRolesApi.md#v2sitessiteidrolesroleiddelete) | **DELETE** /v2/sites/{siteId}/roles/{roleId} | Deletes a site role.
+*SiteRolesApi* | [**v2SitesSiteIdRolesRoleIdPut**](docs/Api/SiteRolesApi.md#v2sitessiteidrolesroleidput) | **PUT** /v2/sites/{siteId}/roles/{roleId} | Create or update the site role
 *SiteTermsOfServicesApi* | [**v12SitesSiteIdTermsOfServiceGet**](docs/Api/SiteTermsOfServicesApi.md#v12sitessiteidtermsofserviceget) | **GET** /v1.2/sites/{site_id}/terms_of_service | Get the current Terms of Service information of a site with assigned site owner
 *SiteTermsOfServicesApi* | [**v12SitesSiteIdTermsOfServiceNotificationPost**](docs/Api/SiteTermsOfServicesApi.md#v12sitessiteidtermsofservicenotificationpost) | **POST** /v1.2/sites/{site_id}/terms_of_service/notification | Sends e-mail notification reminder for owner with pending consent to the Terms of Service
 *SiteTermsOfServicesApi* | [**v12SitesSiteIdTermsOfServicePut**](docs/Api/SiteTermsOfServicesApi.md#v12sitessiteidtermsofserviceput) | **PUT** /v1.2/sites/{site_id}/terms_of_service | Consent to the site&#39;s Terms of Service
@@ -290,6 +293,7 @@ Class | Method | HTTP request | Description
 *SitesApi* | [**v12SitesSiteIdInstallerCompanyGet**](docs/Api/SitesApi.md#v12sitessiteidinstallercompanyget) | **GET** /v1.2/sites/{site_id}/installer_company | Returns the default installer company information for the site
 *SitesApi* | [**v12SitesSiteIdMeGet**](docs/Api/SitesApi.md#v12sitessiteidmeget) | **GET** /v1.2/sites/{site_id}/me | Gets the site user&#39;s own information, with the site user&#39;s specific data
 *SitesApi* | [**v2SitesSiteIdGet**](docs/Api/SitesApi.md#v2sitessiteidget) | **GET** /v2/sites/{siteId} | Gets site/application by id
+*StatisticsApi* | [**v2SitesSiteIdStatisticsRolesGet**](docs/Api/StatisticsApi.md#v2sitessiteidstatisticsrolesget) | **GET** /v2/sites/{siteId}/statistics/roles | Retrieves, for every role available in the site, the number of subjects it is assigned to in the site. Roles without assignments are returned with a count of 0. Supports OData.
 *SubscriptionHistoryApi* | [**v12SitesSiteIdSubscriptionHistoryGet**](docs/Api/SubscriptionHistoryApi.md#v12sitessiteidsubscriptionhistoryget) | **GET** /v1.2/sites/{site_id}/subscription_history | Gets the subscription history for the site
 *SubscriptionHistoryApi* | [**v12SitesSiteIdSubscriptionHistorySubscriptionIdVouchersGet**](docs/Api/SubscriptionHistoryApi.md#v12sitessiteidsubscriptionhistorysubscriptionidvouchersget) | **GET** /v1.2/sites/{site_id}/subscription_history/{subscription_id}/vouchers | Gets the vouchers for a specific subscription history entry
 *SubscriptionsApi* | [**v12SitesSiteIdSubscriptionFeaturesGet**](docs/Api/SubscriptionsApi.md#v12sitessiteidsubscriptionfeaturesget) | **GET** /v1.2/sites/{site_id}/subscription/features | Gets the subscription features for the site
@@ -348,6 +352,8 @@ Class | Method | HTTP request | Description
 - [CredentialScope](docs/Model/CredentialScope.md)
 - [CredentialSettingsResponse](docs/Model/CredentialSettingsResponse.md)
 - [CredentialTaxonomyDto](docs/Model/CredentialTaxonomyDto.md)
+- [CustomSettingsKeyResponse](docs/Model/CustomSettingsKeyResponse.md)
+- [CustomSettingsKeyResponsePagedResponse](docs/Model/CustomSettingsKeyResponsePagedResponse.md)
 - [CustomSettingsRequest](docs/Model/CustomSettingsRequest.md)
 - [CustomSettingsResponse](docs/Model/CustomSettingsResponse.md)
 - [DataProcessingType](docs/Model/DataProcessingType.md)
@@ -381,6 +387,9 @@ Class | Method | HTTP request | Description
 - [HardwareCommunicationType](docs/Model/HardwareCommunicationType.md)
 - [HardwareType](docs/Model/HardwareType.md)
 - [ImportConfigurationRequest](docs/Model/ImportConfigurationRequest.md)
+- [ImportConfigurationResponse](docs/Model/ImportConfigurationResponse.md)
+- [ImportConfigurationResponsePagedResponse](docs/Model/ImportConfigurationResponsePagedResponse.md)
+- [ImportConfigurationSettingsResponse](docs/Model/ImportConfigurationSettingsResponse.md)
 - [ImportConfigurationType](docs/Model/ImportConfigurationType.md)
 - [ImportProcessingFlavor](docs/Model/ImportProcessingFlavor.md)
 - [IncidentNotificationRuleRequest](docs/Model/IncidentNotificationRuleRequest.md)
@@ -563,6 +572,7 @@ Class | Method | HTTP request | Description
 - [RoleExpandableResponse](docs/Model/RoleExpandableResponse.md)
 - [RoleExpandableResponsePagedResponse](docs/Model/RoleExpandableResponsePagedResponse.md)
 - [RoleMappingRequest](docs/Model/RoleMappingRequest.md)
+- [RoleMappingResponse](docs/Model/RoleMappingResponse.md)
 - [RoleResponse](docs/Model/RoleResponse.md)
 - [RoleResponsePagedResponse](docs/Model/RoleResponsePagedResponse.md)
 - [RoleResponseShortInfo](docs/Model/RoleResponseShortInfo.md)
@@ -572,6 +582,7 @@ Class | Method | HTTP request | Description
 - [RoleSettingsResponse](docs/Model/RoleSettingsResponse.md)
 - [RoleSettingsResponsePagedResponse](docs/Model/RoleSettingsResponsePagedResponse.md)
 - [SearchUserResponse](docs/Model/SearchUserResponse.md)
+- [SftpAuthMethod](docs/Model/SftpAuthMethod.md)
 - [SignalStrengthResponse](docs/Model/SignalStrengthResponse.md)
 - [SiteMeResponse](docs/Model/SiteMeResponse.md)
 - [SiteOwnershipRequest](docs/Model/SiteOwnershipRequest.md)
@@ -592,6 +603,8 @@ Class | Method | HTTP request | Description
 - [SiteRolePermissionTagModel](docs/Model/SiteRolePermissionTagModel.md)
 - [SiteRoleSettingsResponse](docs/Model/SiteRoleSettingsResponse.md)
 - [SiteRoleSettingsResponsePagedResponse](docs/Model/SiteRoleSettingsResponsePagedResponse.md)
+- [SiteRoleStatisticModel](docs/Model/SiteRoleStatisticModel.md)
+- [SiteRoleStatisticModelPagedResponse](docs/Model/SiteRoleStatisticModelPagedResponse.md)
 - [SiteStatus](docs/Model/SiteStatus.md)
 - [SiteTagResponse](docs/Model/SiteTagResponse.md)
 - [SiteTagResponsePagedResponse](docs/Model/SiteTagResponsePagedResponse.md)

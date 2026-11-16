@@ -83,4 +83,28 @@ class SiteRolesApiTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for v2SitesSiteIdRolesRoleIdDelete
+     *
+     * Deletes a site role..
+     *
+     */
+    public function testV2SitesSiteIdRolesRoleIdDelete()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for v2SitesSiteIdRolesRoleIdPut
+     *
+     * Create or update the site role.
+     *
+     */
+    public function testV2SitesSiteIdRolesRoleIdPut()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

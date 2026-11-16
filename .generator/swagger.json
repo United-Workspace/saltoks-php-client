@@ -3030,6 +3030,129 @@
         }
       }
     },
+    "/v1.1/sites/{site_id}/users/{site_user_id}/settings/keys": {
+      "get": {
+        "tags": [
+          "CustomSettings"
+        ],
+        "summary": "Gets the custom settings keys for a site user",
+        "description": "### Permission authorization\n- Required: None",
+        "parameters": [
+          {
+            "name": "site_id",
+            "in": "path",
+            "description": "Id of the site",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "site_user_id",
+            "in": "path",
+            "description": "Id of the site user",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter the results using OData syntax.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order the results using OData syntax.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "description": "The number of results to skip.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "$top",
+            "in": "query",
+            "description": "The number of results to return.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "description": "Counts the total number of results.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomSettingsKeyResponsePagedResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1.2/sites/{site_id}/users/{site_user_id}/data_removals": {
       "post": {
         "tags": [
@@ -17665,7 +17788,7 @@
           "SiteUsers"
         ],
         "summary": "Returns the list of activated IQs for the specific user",
-        "description": "### Permission authorization\n- Required: HARDWARE_VIEW_ALL / HARDWARE_MANAGE\n- Accessible: HARDWARE_VIEW_ACCESSIBLE",
+        "description": "### Permission authorization\n- Required: HARDWARE_VIEW_ALL / HARDWARE_MANAGE / REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL\n- Accessible: HARDWARE_VIEW_ACCESSIBLE / REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE",
         "parameters": [
           {
             "name": "site_id",
@@ -19682,6 +19805,149 @@
         }
       }
     },
+    "/v2/sites/{siteId}/roles/{roleId}": {
+      "put": {
+        "tags": [
+          "SiteRoles"
+        ],
+        "summary": "Create or update the site role",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateSiteRoleRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateSiteRoleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleExpandableResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SiteRoles"
+        ],
+        "summary": "Deletes a site role.",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/sites/{siteId}/roles/{roleId}/settings": {
       "patch": {
         "tags": [
@@ -19821,6 +20087,108 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SiteRoleSettingsResponsePagedResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/sites/{siteId}/statistics/roles": {
+      "get": {
+        "tags": [
+          "Statistics"
+        ],
+        "summary": "Retrieves, for every role available in the site, the number of subjects it is assigned to in the site.\nRoles without assignments are returned with a count of 0. Supports OData.",
+        "description": "### Permission authorization\nRequired: SITE_ROLES_MANAGE",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "description": "Site ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter the results using OData syntax.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order the results using OData syntax.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "description": "The number of results to skip.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "$top",
+            "in": "query",
+            "description": "The number of results to return.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "description": "Counts the total number of results.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteRoleStatisticModelPagedResponse"
                 }
               }
             }
@@ -22717,6 +23085,38 @@
         },
         "additionalProperties": false
       },
+      "CustomSettingsKeyResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomSettingsKeyResponsePagedResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomSettingsKeyResponse"
+            },
+            "nullable": true
+          },
+          "next_page_link": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CustomSettingsRequest": {
         "type": "object",
         "properties": {
@@ -23792,6 +24192,90 @@
         },
         "additionalProperties": false,
         "description": "Represents a request to create or update the base tenant import configuration."
+      },
+      "ImportConfigurationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Id of the import configuration",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the import configuration"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ImportConfigurationType"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Whether the import configuration is active"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ImportConfigurationSettingsResponse"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a tenant import configuration."
+      },
+      "ImportConfigurationResponsePagedResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportConfigurationResponse"
+            }
+          },
+          "nextPageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportConfigurationSettingsResponse": {
+        "type": "object",
+        "properties": {
+          "processingFlavor": {
+            "$ref": "#/components/schemas/ImportProcessingFlavor"
+          },
+          "periodCron": {
+            "type": "string",
+            "description": "Cron expression controlling how often the SFTP source is polled for new files."
+          },
+          "sftpAddress": {
+            "type": "string",
+            "description": "Hostname of the SFTP server."
+          },
+          "sftpUser": {
+            "type": "string",
+            "description": "Username used to authenticate against the SFTP server."
+          },
+          "authMethod": {
+            "$ref": "#/components/schemas/SftpAuthMethod"
+          },
+          "defaultProductRoleCode": {
+            "type": "string",
+            "description": "Product role code assigned to users that don't match any entry in Cws.Api.Import.Web.Endpoints.ImportConfigurations.Responses.ImportConfigurationSettingsResponse.RolesMappings.",
+            "nullable": true
+          },
+          "rolesMappings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleMappingResponse"
+            },
+            "description": "Maps external role codes from the source file to product role codes."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents the merged settings of all import configuration types. Only SFTP settings are supported at the moment.\nKeys are never returned."
       },
       "ImportConfigurationType": {
         "enum": [
@@ -28558,6 +29042,21 @@
         "additionalProperties": false,
         "description": "Maps an external role code from the source file to a product role code."
       },
+      "RoleMappingResponse": {
+        "type": "object",
+        "properties": {
+          "externalRoleCode": {
+            "type": "string",
+            "description": "Role code as it appears in the source file."
+          },
+          "productRoleCode": {
+            "type": "string",
+            "description": "Product role code to assign."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Maps an external role code from the source file to a product role code."
+      },
       "RoleResponse": {
         "type": "object",
         "properties": {
@@ -28803,6 +29302,12 @@
         },
         "additionalProperties": false,
         "description": "Contains user details"
+      },
+      "SftpAuthMethod": {
+        "enum": [
+          "PrivateKey"
+        ],
+        "type": "string"
       },
       "SignalStrengthResponse": {
         "type": "object",
@@ -29409,6 +29914,41 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SiteRoleSettingsResponse"
+            }
+          },
+          "nextPageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SiteRoleStatisticModel": {
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subjectCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SiteRoleStatisticModelPagedResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteRoleStatisticModel"
             }
           },
           "nextPageLink": {
