@@ -78,6 +78,13 @@ class SiteRolesApi
         'v2SitesSiteIdRolesGet' => [
             'application/json',
         ],
+        'v2SitesSiteIdRolesRoleIdDelete' => [
+            'application/json',
+        ],
+        'v2SitesSiteIdRolesRoleIdPut' => [
+            'application/json',
+            'application/*+json',
+        ],
     ];
 
     /**
@@ -495,6 +502,597 @@ class SiteRolesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdDelete
+     *
+     * Deletes a site role.
+     *
+     * @param  string $siteId siteId (required)
+     * @param  string $roleId roleId (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function v2SitesSiteIdRolesRoleIdDelete($siteId, $roleId, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'][0])
+    {
+        $this->v2SitesSiteIdRolesRoleIdDeleteWithHttpInfo($siteId, $roleId, $contentType);
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdDeleteWithHttpInfo
+     *
+     * Deletes a site role.
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v2SitesSiteIdRolesRoleIdDeleteWithHttpInfo($siteId, $roleId, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'][0])
+    {
+        $request = $this->v2SitesSiteIdRolesRoleIdDeleteRequest($siteId, $roleId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdDeleteAsync
+     *
+     * Deletes a site role.
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v2SitesSiteIdRolesRoleIdDeleteAsync($siteId, $roleId, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'][0])
+    {
+        return $this->v2SitesSiteIdRolesRoleIdDeleteAsyncWithHttpInfo($siteId, $roleId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdDeleteAsyncWithHttpInfo
+     *
+     * Deletes a site role.
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v2SitesSiteIdRolesRoleIdDeleteAsyncWithHttpInfo($siteId, $roleId, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'][0])
+    {
+        $returnType = '';
+        $request = $this->v2SitesSiteIdRolesRoleIdDeleteRequest($siteId, $roleId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v2SitesSiteIdRolesRoleIdDelete'
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function v2SitesSiteIdRolesRoleIdDeleteRequest($siteId, $roleId, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdDelete'][0])
+    {
+
+        // verify the required parameter 'siteId' is set
+        if ($siteId === null || (is_array($siteId) && count($siteId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $siteId when calling v2SitesSiteIdRolesRoleIdDelete'
+            );
+        }
+
+        // verify the required parameter 'roleId' is set
+        if ($roleId === null || (is_array($roleId) && count($roleId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $roleId when calling v2SitesSiteIdRolesRoleIdDelete'
+            );
+        }
+
+
+        $resourcePath = '/v2/sites/{siteId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($siteId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'siteId' . '}',
+                ObjectSerializer::toPathValue($siteId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($roleId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($roleId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdPut
+     *
+     * Create or update the site role
+     *
+     * @param  string $siteId siteId (required)
+     * @param  string $roleId roleId (required)
+     * @param  \SaltoKS\Model\CreateOrUpdateSiteRoleRequest|null $createOrUpdateSiteRoleRequest createOrUpdateSiteRoleRequest (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdPut'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \SaltoKS\Model\RoleExpandableResponse|\SaltoKS\Model\ProblemDetails|\SaltoKS\Model\ProblemDetails
+     */
+    public function v2SitesSiteIdRolesRoleIdPut($siteId, $roleId, $createOrUpdateSiteRoleRequest = null, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdPut'][0])
+    {
+        list($response) = $this->v2SitesSiteIdRolesRoleIdPutWithHttpInfo($siteId, $roleId, $createOrUpdateSiteRoleRequest, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdPutWithHttpInfo
+     *
+     * Create or update the site role
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  \SaltoKS\Model\CreateOrUpdateSiteRoleRequest|null $createOrUpdateSiteRoleRequest (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdPut'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \SaltoKS\Model\RoleExpandableResponse|\SaltoKS\Model\ProblemDetails|\SaltoKS\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v2SitesSiteIdRolesRoleIdPutWithHttpInfo($siteId, $roleId, $createOrUpdateSiteRoleRequest = null, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdPut'][0])
+    {
+        $request = $this->v2SitesSiteIdRolesRoleIdPutRequest($siteId, $roleId, $createOrUpdateSiteRoleRequest, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\RoleExpandableResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ProblemDetails',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ProblemDetails',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\SaltoKS\Model\RoleExpandableResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\RoleExpandableResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdPutAsync
+     *
+     * Create or update the site role
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  \SaltoKS\Model\CreateOrUpdateSiteRoleRequest|null $createOrUpdateSiteRoleRequest (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v2SitesSiteIdRolesRoleIdPutAsync($siteId, $roleId, $createOrUpdateSiteRoleRequest = null, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdPut'][0])
+    {
+        return $this->v2SitesSiteIdRolesRoleIdPutAsyncWithHttpInfo($siteId, $roleId, $createOrUpdateSiteRoleRequest, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v2SitesSiteIdRolesRoleIdPutAsyncWithHttpInfo
+     *
+     * Create or update the site role
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  \SaltoKS\Model\CreateOrUpdateSiteRoleRequest|null $createOrUpdateSiteRoleRequest (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v2SitesSiteIdRolesRoleIdPutAsyncWithHttpInfo($siteId, $roleId, $createOrUpdateSiteRoleRequest = null, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdPut'][0])
+    {
+        $returnType = '\SaltoKS\Model\RoleExpandableResponse';
+        $request = $this->v2SitesSiteIdRolesRoleIdPutRequest($siteId, $roleId, $createOrUpdateSiteRoleRequest, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v2SitesSiteIdRolesRoleIdPut'
+     *
+     * @param  string $siteId (required)
+     * @param  string $roleId (required)
+     * @param  \SaltoKS\Model\CreateOrUpdateSiteRoleRequest|null $createOrUpdateSiteRoleRequest (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v2SitesSiteIdRolesRoleIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function v2SitesSiteIdRolesRoleIdPutRequest($siteId, $roleId, $createOrUpdateSiteRoleRequest = null, string $contentType = self::contentTypes['v2SitesSiteIdRolesRoleIdPut'][0])
+    {
+
+        // verify the required parameter 'siteId' is set
+        if ($siteId === null || (is_array($siteId) && count($siteId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $siteId when calling v2SitesSiteIdRolesRoleIdPut'
+            );
+        }
+
+        // verify the required parameter 'roleId' is set
+        if ($roleId === null || (is_array($roleId) && count($roleId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $roleId when calling v2SitesSiteIdRolesRoleIdPut'
+            );
+        }
+
+
+
+        $resourcePath = '/v2/sites/{siteId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($siteId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'siteId' . '}',
+                ObjectSerializer::toPathValue($siteId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($roleId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($roleId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($createOrUpdateSiteRoleRequest)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createOrUpdateSiteRoleRequest));
+            } else {
+                $httpBody = $createOrUpdateSiteRoleRequest;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

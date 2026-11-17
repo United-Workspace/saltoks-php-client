@@ -158,7 +158,7 @@ v12SitesSiteIdUsersIdActivatedIqsGet($siteId, $id, $filter, $orderby, $skip, $to
 
 Returns the list of activated IQs for the specific user
 
-### Permission authorization - Required: HARDWARE_VIEW_ALL / HARDWARE_MANAGE - Accessible: HARDWARE_VIEW_ACCESSIBLE
+### Permission authorization - Required: HARDWARE_VIEW_ALL / HARDWARE_MANAGE / REMOTE_LOCKING_ALL / REMOTE_OFFICEMODE_ALL - Accessible: HARDWARE_VIEW_ACCESSIBLE / REMOTE_LOCKING_ACCESSIBLE / REMOTE_OFFICEMODE_ACCESSIBLE
 
 ### Example
 

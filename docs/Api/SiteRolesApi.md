@@ -5,6 +5,8 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**v2SitesSiteIdRolesGet()**](SiteRolesApi.md#v2SitesSiteIdRolesGet) | **GET** /v2/sites/{siteId}/roles | Retrieves roles for specific site with OData support |
+| [**v2SitesSiteIdRolesRoleIdDelete()**](SiteRolesApi.md#v2SitesSiteIdRolesRoleIdDelete) | **DELETE** /v2/sites/{siteId}/roles/{roleId} | Deletes a site role. |
+| [**v2SitesSiteIdRolesRoleIdPut()**](SiteRolesApi.md#v2SitesSiteIdRolesRoleIdPut) | **PUT** /v2/sites/{siteId}/roles/{roleId} | Create or update the site role |
 
 
 ## `v2SitesSiteIdRolesGet()`
@@ -69,6 +71,127 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `v2SitesSiteIdRolesRoleIdDelete()`
+
+```php
+v2SitesSiteIdRolesRoleIdDelete($siteId, $roleId)
+```
+
+Deletes a site role.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = SaltoKS\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new SaltoKS\Api\SiteRolesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$siteId = 'siteId_example'; // string
+$roleId = 'roleId_example'; // string
+
+try {
+    $apiInstance->v2SitesSiteIdRolesRoleIdDelete($siteId, $roleId);
+} catch (Exception $e) {
+    echo 'Exception when calling SiteRolesApi->v2SitesSiteIdRolesRoleIdDelete: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **siteId** | **string**|  | |
+| **roleId** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `v2SitesSiteIdRolesRoleIdPut()`
+
+```php
+v2SitesSiteIdRolesRoleIdPut($siteId, $roleId, $createOrUpdateSiteRoleRequest): \SaltoKS\Model\RoleExpandableResponse
+```
+
+Create or update the site role
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = SaltoKS\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new SaltoKS\Api\SiteRolesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$siteId = 'siteId_example'; // string
+$roleId = 'roleId_example'; // string
+$createOrUpdateSiteRoleRequest = new \SaltoKS\Model\CreateOrUpdateSiteRoleRequest(); // \SaltoKS\Model\CreateOrUpdateSiteRoleRequest
+
+try {
+    $result = $apiInstance->v2SitesSiteIdRolesRoleIdPut($siteId, $roleId, $createOrUpdateSiteRoleRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SiteRolesApi->v2SitesSiteIdRolesRoleIdPut: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **siteId** | **string**|  | |
+| **roleId** | **string**|  | |
+| **createOrUpdateSiteRoleRequest** | [**\SaltoKS\Model\CreateOrUpdateSiteRoleRequest**](../Model/CreateOrUpdateSiteRoleRequest.md)|  | [optional] |
+
+### Return type
+
+[**\SaltoKS\Model\RoleExpandableResponse**](../Model/RoleExpandableResponse.md)
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -86,6 +86,9 @@ class CustomSettingsApi
             'application/*+json',
             'application/x-www-form-urlencoded',
         ],
+        'v11SitesSiteIdUsersSiteUserIdSettingsKeysGet' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -1127,6 +1130,429 @@ class CustomSettingsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v11SitesSiteIdUsersSiteUserIdSettingsKeysGet
+     *
+     * Gets the custom settings keys for a site user
+     *
+     * @param  string $siteId Id of the site (required)
+     * @param  string $siteUserId Id of the site user (required)
+     * @param  string|null $filter Filter the results using OData syntax. (optional)
+     * @param  string|null $orderby Order the results using OData syntax. (optional)
+     * @param  int|null $skip The number of results to skip. (optional)
+     * @param  int|null $top The number of results to return. (optional)
+     * @param  bool|null $count Counts the total number of results. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \SaltoKS\Model\CustomSettingsKeyResponsePagedResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse
+     */
+    public function v11SitesSiteIdUsersSiteUserIdSettingsKeysGet($siteId, $siteUserId, $filter = null, $orderby = null, $skip = null, $top = null, $count = null, string $contentType = self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'][0])
+    {
+        list($response) = $this->v11SitesSiteIdUsersSiteUserIdSettingsKeysGetWithHttpInfo($siteId, $siteUserId, $filter, $orderby, $skip, $top, $count, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation v11SitesSiteIdUsersSiteUserIdSettingsKeysGetWithHttpInfo
+     *
+     * Gets the custom settings keys for a site user
+     *
+     * @param  string $siteId Id of the site (required)
+     * @param  string $siteUserId Id of the site user (required)
+     * @param  string|null $filter Filter the results using OData syntax. (optional)
+     * @param  string|null $orderby Order the results using OData syntax. (optional)
+     * @param  int|null $skip The number of results to skip. (optional)
+     * @param  int|null $top The number of results to return. (optional)
+     * @param  bool|null $count Counts the total number of results. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'] to see the possible values for this operation
+     *
+     * @throws \SaltoKS\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \SaltoKS\Model\CustomSettingsKeyResponsePagedResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse|\SaltoKS\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v11SitesSiteIdUsersSiteUserIdSettingsKeysGetWithHttpInfo($siteId, $siteUserId, $filter = null, $orderby = null, $skip = null, $top = null, $count = null, string $contentType = self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'][0])
+    {
+        $request = $this->v11SitesSiteIdUsersSiteUserIdSettingsKeysGetRequest($siteId, $siteUserId, $filter, $orderby, $skip, $top, $count, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\CustomSettingsKeyResponsePagedResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\SaltoKS\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\SaltoKS\Model\CustomSettingsKeyResponsePagedResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\CustomSettingsKeyResponsePagedResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SaltoKS\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v11SitesSiteIdUsersSiteUserIdSettingsKeysGetAsync
+     *
+     * Gets the custom settings keys for a site user
+     *
+     * @param  string $siteId Id of the site (required)
+     * @param  string $siteUserId Id of the site user (required)
+     * @param  string|null $filter Filter the results using OData syntax. (optional)
+     * @param  string|null $orderby Order the results using OData syntax. (optional)
+     * @param  int|null $skip The number of results to skip. (optional)
+     * @param  int|null $top The number of results to return. (optional)
+     * @param  bool|null $count Counts the total number of results. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v11SitesSiteIdUsersSiteUserIdSettingsKeysGetAsync($siteId, $siteUserId, $filter = null, $orderby = null, $skip = null, $top = null, $count = null, string $contentType = self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'][0])
+    {
+        return $this->v11SitesSiteIdUsersSiteUserIdSettingsKeysGetAsyncWithHttpInfo($siteId, $siteUserId, $filter, $orderby, $skip, $top, $count, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v11SitesSiteIdUsersSiteUserIdSettingsKeysGetAsyncWithHttpInfo
+     *
+     * Gets the custom settings keys for a site user
+     *
+     * @param  string $siteId Id of the site (required)
+     * @param  string $siteUserId Id of the site user (required)
+     * @param  string|null $filter Filter the results using OData syntax. (optional)
+     * @param  string|null $orderby Order the results using OData syntax. (optional)
+     * @param  int|null $skip The number of results to skip. (optional)
+     * @param  int|null $top The number of results to return. (optional)
+     * @param  bool|null $count Counts the total number of results. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v11SitesSiteIdUsersSiteUserIdSettingsKeysGetAsyncWithHttpInfo($siteId, $siteUserId, $filter = null, $orderby = null, $skip = null, $top = null, $count = null, string $contentType = self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'][0])
+    {
+        $returnType = '\SaltoKS\Model\CustomSettingsKeyResponsePagedResponse';
+        $request = $this->v11SitesSiteIdUsersSiteUserIdSettingsKeysGetRequest($siteId, $siteUserId, $filter, $orderby, $skip, $top, $count, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'
+     *
+     * @param  string $siteId Id of the site (required)
+     * @param  string $siteUserId Id of the site user (required)
+     * @param  string|null $filter Filter the results using OData syntax. (optional)
+     * @param  string|null $orderby Order the results using OData syntax. (optional)
+     * @param  int|null $skip The number of results to skip. (optional)
+     * @param  int|null $top The number of results to return. (optional)
+     * @param  bool|null $count Counts the total number of results. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function v11SitesSiteIdUsersSiteUserIdSettingsKeysGetRequest($siteId, $siteUserId, $filter = null, $orderby = null, $skip = null, $top = null, $count = null, string $contentType = self::contentTypes['v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'][0])
+    {
+
+        // verify the required parameter 'siteId' is set
+        if ($siteId === null || (is_array($siteId) && count($siteId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $siteId when calling v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'
+            );
+        }
+
+        // verify the required parameter 'siteUserId' is set
+        if ($siteUserId === null || (is_array($siteUserId) && count($siteUserId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $siteUserId when calling v11SitesSiteIdUsersSiteUserIdSettingsKeysGet'
+            );
+        }
+
+
+
+
+
+
+
+        $resourcePath = '/v1.1/sites/{site_id}/users/{site_user_id}/settings/keys';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            '$filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $orderby,
+            '$orderby', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            '$skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $top,
+            '$top', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $count,
+            '$count', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($siteId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'site_id' . '}',
+                ObjectSerializer::toPathValue($siteId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($siteUserId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'site_user_id' . '}',
+                ObjectSerializer::toPathValue($siteUserId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
