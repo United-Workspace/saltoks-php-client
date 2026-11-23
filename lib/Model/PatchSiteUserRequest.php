@@ -69,7 +69,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => 'bool',
         'overridePrivacyMode' => 'bool',
         'usePin' => 'bool',
-        'expiresAt' => '\DateTime'
+        'expiresAt' => '\DateTime',
+        'remoteAccess' => 'bool',
+        'remoteOfficeMode' => 'bool'
     ];
 
     /**
@@ -91,7 +93,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => null,
         'overridePrivacyMode' => null,
         'usePin' => null,
-        'expiresAt' => 'date-time'
+        'expiresAt' => 'date-time',
+        'remoteAccess' => null,
+        'remoteOfficeMode' => null
     ];
 
     /**
@@ -111,7 +115,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => true,
         'overridePrivacyMode' => true,
         'usePin' => true,
-        'expiresAt' => true
+        'expiresAt' => true,
+        'remoteAccess' => true,
+        'remoteOfficeMode' => true
     ];
 
     /**
@@ -211,7 +217,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => 'blocked',
         'overridePrivacyMode' => 'override_privacy_mode',
         'usePin' => 'use_pin',
-        'expiresAt' => 'expires_at'
+        'expiresAt' => 'expires_at',
+        'remoteAccess' => 'remote_access',
+        'remoteOfficeMode' => 'remote_office_mode'
     ];
 
     /**
@@ -231,7 +239,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => 'setBlocked',
         'overridePrivacyMode' => 'setOverridePrivacyMode',
         'usePin' => 'setUsePin',
-        'expiresAt' => 'setExpiresAt'
+        'expiresAt' => 'setExpiresAt',
+        'remoteAccess' => 'setRemoteAccess',
+        'remoteOfficeMode' => 'setRemoteOfficeMode'
     ];
 
     /**
@@ -251,7 +261,9 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'blocked' => 'getBlocked',
         'overridePrivacyMode' => 'getOverridePrivacyMode',
         'usePin' => 'getUsePin',
-        'expiresAt' => 'getExpiresAt'
+        'expiresAt' => 'getExpiresAt',
+        'remoteAccess' => 'getRemoteAccess',
+        'remoteOfficeMode' => 'getRemoteOfficeMode'
     ];
 
     /**
@@ -323,6 +335,8 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('overridePrivacyMode', $data ?? [], null);
         $this->setIfExists('usePin', $data ?? [], null);
         $this->setIfExists('expiresAt', $data ?? [], null);
+        $this->setIfExists('remoteAccess', $data ?? [], null);
+        $this->setIfExists('remoteOfficeMode', $data ?? [], null);
     }
 
     /**
@@ -771,6 +785,74 @@ class PatchSiteUserRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['expiresAt'] = $expiresAt;
+
+        return $this;
+    }
+
+    /**
+     * Gets remoteAccess
+     *
+     * @return bool|null
+     */
+    public function getRemoteAccess()
+    {
+        return $this->container['remoteAccess'];
+    }
+
+    /**
+     * Sets remoteAccess
+     *
+     * @param bool|null $remoteAccess Indicates if the user has remote access to locks on this site. When true the site_mobile_user role is assigned, when false it is removed unless it is also provided in RoleIds
+     *
+     * @return self
+     */
+    public function setRemoteAccess($remoteAccess)
+    {
+        if (is_null($remoteAccess)) {
+            array_push($this->openAPINullablesSetToNull, 'remoteAccess');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('remoteAccess', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['remoteAccess'] = $remoteAccess;
+
+        return $this;
+    }
+
+    /**
+     * Gets remoteOfficeMode
+     *
+     * @return bool|null
+     */
+    public function getRemoteOfficeMode()
+    {
+        return $this->container['remoteOfficeMode'];
+    }
+
+    /**
+     * Sets remoteOfficeMode
+     *
+     * @param bool|null $remoteOfficeMode Indicates if the user can trigger remote office mode on locks in this site.. When true the site_remote_office_mode_user role is assigned, when false it is removed unless it is also provided in RoleIds
+     *
+     * @return self
+     */
+    public function setRemoteOfficeMode($remoteOfficeMode)
+    {
+        if (is_null($remoteOfficeMode)) {
+            array_push($this->openAPINullablesSetToNull, 'remoteOfficeMode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('remoteOfficeMode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['remoteOfficeMode'] = $remoteOfficeMode;
 
         return $this;
     }

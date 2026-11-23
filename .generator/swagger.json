@@ -26779,6 +26779,16 @@
             "description": "Date and time at which the user's access to the site expires.",
             "format": "date-time",
             "nullable": true
+          },
+          "remote_access": {
+            "type": "boolean",
+            "description": "Indicates if the user has remote access to locks on this site. When true the site_mobile_user role is assigned,\nwhen false it is removed unless it is also provided in RoleIds",
+            "nullable": true
+          },
+          "remote_office_mode": {
+            "type": "boolean",
+            "description": "Indicates if the user can trigger remote office mode on locks in this site.. When true the site_remote_office_mode_user role is\nassigned, when false it is removed unless it is also provided in RoleIds",
+            "nullable": true
           }
         },
         "additionalProperties": false

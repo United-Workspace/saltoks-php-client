@@ -187,4 +187,22 @@ class PatchSiteUserRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "remoteAccess"
+     */
+    public function testPropertyRemoteAccess()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "remoteOfficeMode"
+     */
+    public function testPropertyRemoteOfficeMode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
