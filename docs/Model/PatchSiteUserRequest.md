@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **overridePrivacyMode** | **bool** | Indicates if the user can override privacy mode in this site, false by default | [optional]
 **usePin** | **bool** | Indicates if the user is able to use pin in this site | [optional]
 **expiresAt** | **\DateTime** | Date and time at which the user&#39;s access to the site expires. | [optional]
+**remoteAccess** | **bool** | Indicates if the user has remote access to locks on this site. When true the site_mobile_user role is assigned, when false it is removed unless it is also provided in RoleIds | [optional]
+**remoteOfficeMode** | **bool** | Indicates if the user can trigger remote office mode on locks in this site.. When true the site_remote_office_mode_user role is assigned, when false it is removed unless it is also provided in RoleIds | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
